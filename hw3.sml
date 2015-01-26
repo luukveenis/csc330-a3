@@ -30,3 +30,9 @@ fun g f1 f2 p =
 
 
   (**** put all your code after this line ****)
+
+fun only_capitals(lst: string list) =
+  List.filter (fn s => Char.isUpper(String.sub(s,0))) lst
+
+fun longest_string1(lst: string list) =
+  foldl (fn (x,y) => if String.size(x) > String.size(y) then x else y)  "" lst
