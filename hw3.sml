@@ -89,18 +89,16 @@ fun count_wildcards p =
   let
     val f1 = fn() => 1
     val f2 = fn(x) => 0
-    val r = g f1 f2
   in
-    r p
+    g f1 f2 p
   end
 
 fun count_wild_and_variable_lengths p =
   let
     val f1 = fn()  => 1
     val f2 = fn(s) => String.size(s)
-    val r = g f1 f2
   in
-    r p
+    g f1 f2 p
   end
 
 fun count_some_var(s, p) =
