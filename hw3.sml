@@ -16,6 +16,13 @@ datatype valu = Const of int
               | Tuple of valu list
               | Constructor of string * valu
 
+(* g takes as parameters: two functions f1 and f2, and a variable p *)
+(* g creates a val r which is a function that takes one parameter p (fixes f1/f2) *)
+(* if p is a Wildcard it evaluates f1 *)
+(* if p is a Variable it evaluates f2 passing the string contained in it as a paremeter *)
+(* if p is a TupleP it sums the results of calling r on each element in the list ps *)
+(* if p is a ConstructorP it evaluates r with p as a parameter *)
+(* if p is a UnitP or ConstP it returns 0 *)
 fun g f1 f2 p =
   let
     val r = g f1 f2
