@@ -144,12 +144,12 @@ fun test_rev_string() =
           {actual=rev_string "", expected=""
         }])
 
-(* fun test_first_answer() = *)
-(*     test("first_answer", [ *)
-(*           {actual=first_answer (fn x => if (x mod 2) = 0 then SOME x else NONE) [1,1,4,3],expected=4}, *)
-(*           {actual=first_answer (fn x => if x > 3 then SOME x else NONE) [1,2,3,4,5], expected=4} *)
-(*         ]) *)
-(*  *)
+fun test_first_answer() =
+    test("first_answer", [
+          {actual=first_answer (fn x => if (x mod 2) = 0 then SOME x else NONE) [1,1,4,3],expected=4},
+          {actual=first_answer (fn x => if x > 3 then SOME x else NONE) [1,2,3,4,5], expected=4}
+        ])
+
 (* fun test_first_answer_exc() = *)
 (*     test("first_answer_exception",[ *)
 (*           {actual=(first_answer *)
@@ -353,8 +353,8 @@ val all_tests =
      (* test_longest_string3, *)
      (* test_longest_string4, *)
      (* test_longest_cap, *)
-     test_rev_string
-     (* test_first_answer, *)
+     test_rev_string,
+     test_first_answer
      (* test_first_answer_exc, *)
      (* test_all_answers, *)
      (* test_count_wildcards , *)

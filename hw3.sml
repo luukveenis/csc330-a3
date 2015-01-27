@@ -42,3 +42,10 @@ fun longest_string2(lst: string list) =
 
 fun rev_string(s: string) =
   (String.implode o rev o String.explode) s
+
+fun first_answer f lst =
+  case lst of
+    [] => raise NoAnswer
+  | x::lst' => case f(x) of
+                 NONE   => first_answer f lst'
+               | SOME y => y
