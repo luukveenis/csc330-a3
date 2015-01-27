@@ -195,18 +195,18 @@ fun test_count_wild_and_variable_lengths () =
    {actual=count_wild_and_variable_lengths(Wildcard),expected=1},
    {actual=count_wild_and_variable_lengths(Variable "bar"),expected=3}])
 
-(* fun test_count_some_var() = *)
-(*   test("count_some_var", *)
-(*        [{actual=count_some_var("test", *)
-(*               TupleP [TupleP [Wildcard, UnitP, Variable "test",Variable "test"]]), *)
-(*          expected=2}, *)
-(*        {actual=count_some_var("test",TupleP [TupleP [Wildcard, UnitP, *)
-(*                               Variable "te"]]), *)
-(*          expected=0}, *)
-(*        {actual=count_some_var ("test", *)
-(*                   TupleP [TupleP [Wildcard, UnitP, Variable "test"]]), *)
-(*          expected=1}]) *)
-(*  *)
+fun test_count_some_var() =
+  test("count_some_var",
+       [{actual=count_some_var("test",
+              TupleP [TupleP [Wildcard, UnitP, Variable "test",Variable "test"]]),
+         expected=2},
+       {actual=count_some_var("test",TupleP [TupleP [Wildcard, UnitP,
+                              Variable "te"]]),
+         expected=0},
+       {actual=count_some_var ("test",
+                  TupleP [TupleP [Wildcard, UnitP, Variable "test"]]),
+         expected=1}])
+
 (* fun test_check_pat() = *)
 (*     test("check_pat", *)
 (*          [{actual=check_pat (TupleP [Wildcard,Variable "cat", *)
@@ -365,8 +365,8 @@ val all_tests =
      test_first_answer_exc,
      test_all_answers,
      test_count_wildcards,
-     test_count_wild_and_variable_lengths
-     (* test_count_some_var, *)
+     test_count_wild_and_variable_lengths,
+     test_count_some_var
      (* test_check_pat, *)
      (* test_match, *)
      (* test_first_match *)

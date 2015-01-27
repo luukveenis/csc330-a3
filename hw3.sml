@@ -102,3 +102,11 @@ fun count_wild_and_variable_lengths p =
   in
     r p
   end
+
+fun count_some_var(s, p) =
+  let
+    val f1 = fn() => 0
+    val f2 = fn(x) => if x=s then 1 else 0
+  in
+    g f1 f2 p
+  end
