@@ -175,19 +175,19 @@ fun test_all_answers() =
     {actual=all_answers (fn x => if (x < 0) then NONE else SOME ([1])) [],
       expected=SOME []}])
 
-(* fun test_count_wildcards () = *)
-(*     test("count_wildcards", *)
-(*     [{actual=count_wildcards(Wildcard),expected=1}, *)
-(*      {actual=count_wildcards(UnitP), expected=0}, *)
-(*      {actual=count_wildcards(ConstP 1),expected=0}, *)
-(*      {actual=count_wildcards(TupleP []),expected= 0}, *)
-(*      {actual=count_wildcards(TupleP [Wildcard]),expected=1}, *)
-(*      {actual=count_wildcards(TupleP [Wildcard, UnitP, Variable "x"]),expected=1}, *)
-(*      {actual=count_wildcards(TupleP [Wildcard, Wildcard, Variable "xy"]),expected=2}, *)
-(*      {actual=count_wildcards(TupleP [TupleP [Wildcard, Wildcard]]),expected=2}, *)
-(*      {actual=count_wildcards(TupleP [ConstructorP ("a", Wildcard), TupleP [Wildcard]]), *)
-(*       expected=2}]) *)
-(*  *)
+fun test_count_wildcards () =
+    test("count_wildcards",
+    [{actual=count_wildcards(Wildcard),expected=1},
+     {actual=count_wildcards(UnitP), expected=0},
+     {actual=count_wildcards(ConstP 1),expected=0},
+     {actual=count_wildcards(TupleP []),expected= 0},
+     {actual=count_wildcards(TupleP [Wildcard]),expected=1},
+     {actual=count_wildcards(TupleP [Wildcard, UnitP, Variable "x"]),expected=1},
+     {actual=count_wildcards(TupleP [Wildcard, Wildcard, Variable "xy"]),expected=2},
+     {actual=count_wildcards(TupleP [TupleP [Wildcard, Wildcard]]),expected=2},
+     {actual=count_wildcards(TupleP [ConstructorP ("a", Wildcard), TupleP [Wildcard]]),
+      expected=2}])
+
 (* fun test_count_some_var() = *)
 (*   test("count_some_var", *)
 (*        [{actual=count_some_var("test", *)
@@ -356,8 +356,8 @@ val all_tests =
      test_rev_string,
      test_first_answer,
      test_first_answer_exc,
-     test_all_answers
-     (* test_count_wildcards , *)
+     test_all_answers,
+     test_count_wildcards
      (* test_count_some_var, *)
      (* test_check_pat, *)
      (* test_match, *)

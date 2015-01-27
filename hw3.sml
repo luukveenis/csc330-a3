@@ -35,7 +35,6 @@ fun g f1 f2 p =
     | _                 => 0
   end
 
-
   (**** put all your code after this line ****)
 
 fun only_capitals(lst: string list) =
@@ -84,4 +83,13 @@ fun all_answers f lst =
                    | SOME l => aux(f, lst', acc @ l)
   in
     aux(f, lst, [])
+  end
+
+fun count_wildcards p =
+  let
+    val f1 = fn() => 1
+    val f2 = fn(x) => 0
+    val r = g f1 f2
+  in
+    r p
   end
