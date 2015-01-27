@@ -49,3 +49,15 @@ fun first_answer f lst =
   | x::lst' => case f(x) of
                  NONE   => first_answer f lst'
                | SOME y => y
+
+fun all_answers f lst =
+  let
+    fun aux(f, lst, acc) =
+      case lst of
+        []      => SOME acc
+      | x::lst' => case f(x) of
+                     NONE   => NONE
+                   | SOME l => aux(f, lst', acc @ l)
+  in
+    aux(f, lst, [])
+  end
