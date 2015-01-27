@@ -103,25 +103,25 @@ fun test_longest_string2() =
           {actual=longest_string2(swords), expected="dog"}
         ])
 
-(* fun test_longest_string3() = *)
-(*     test("test_longest_string3",[ *)
-(*           {actual=longest_string3(lwords), expected="loooong string"}, *)
-(*           {actual=longest_string3(swords), expected="the"}, *)
-(*           {actual=longest_string3 ["A","bc","C"], expected="bc"}, *)
-(*           {actual=longest_string3(["Mexico","Ottawa"]), expected="Mexico"}, *)
-(*           {actual=longest_string3(["vancouver","Ottawa","Victoria"]), expected="vancouver"}, *)
-(*           {actual=longest_string3([]), expected=""} *)
-(*         ]) *)
-(*  *)
-(*  *)
-(* fun test_longest_string4() = *)
-(*     test("test_longest_string4",[ *)
-(*           {actual=longest_string4(lwords), expected="loooong string"}, *)
-(*           {actual=longest_string4([]), expected=""}, *)
-(*           {actual=longest_string4(["Mexico","Ottawa"]), expected="Ottawa"}, *)
-(*           {actual=longest_string4(swords), expected="dog"} *)
-(*         ]) *)
-(*  *)
+fun test_longest_string3() =
+    test("test_longest_string3",[
+          {actual=longest_string3(lwords), expected="loooong string"},
+          {actual=longest_string3(swords), expected="the"},
+          {actual=longest_string3 ["A","bc","C"], expected="bc"},
+          {actual=longest_string3(["Mexico","Ottawa"]), expected="Mexico"},
+          {actual=longest_string3(["vancouver","Ottawa","Victoria"]), expected="vancouver"},
+          {actual=longest_string3([]), expected=""}
+        ])
+
+
+fun test_longest_string4() =
+    test("test_longest_string4",[
+          {actual=longest_string4(lwords), expected="loooong string"},
+          {actual=longest_string4([]), expected=""},
+          {actual=longest_string4(["Mexico","Ottawa"]), expected="Ottawa"},
+          {actual=longest_string4(swords), expected="dog"}
+        ])
+
 (* fun test_longest_cap() = *)
 (*   let *)
 (*     val words = ["This","the","A","Hello","World","not","long string","loooong string"] *)
@@ -350,8 +350,8 @@ val all_tests =
     [test_only_capitals,
      test_longest_string1,
      test_longest_string2,
-     (* test_longest_string3, *)
-     (* test_longest_string4, *)
+     test_longest_string3,
+     test_longest_string4,
      (* test_longest_cap, *)
      test_rev_string,
      test_first_answer,
