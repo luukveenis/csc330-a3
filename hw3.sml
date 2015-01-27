@@ -36,3 +36,6 @@ fun only_capitals(lst: string list) =
 
 fun longest_string1(lst: string list) =
   foldl (fn (x,y) => if String.size(x) > String.size(y) then x else y)  "" lst
+
+fun longest_string2(lst: string list) =
+  foldl (fn (x,y) => if String.size(x) >= String.size(y) then x else y)  "" lst
