@@ -39,3 +39,6 @@ fun longest_string1(lst: string list) =
 
 fun longest_string2(lst: string list) =
   foldl (fn (x,y) => if String.size(x) >= String.size(y) then x else y)  "" lst
+
+fun rev_string(s: string) =
+  (String.implode o rev o String.explode) s
