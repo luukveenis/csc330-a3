@@ -108,3 +108,19 @@ fun count_some_var(s, p) =
   in
     g f1 f2 p
   end
+
+fun check_pat p =
+  let
+    fun all_strings p =
+      case p of
+        Variable x        => [x]
+      | TupleP ps         => List.foldl (fn (p,acc) => (acc @ all_strings p)) [] ps
+      | ConstructorP(_,p) => all_strings p
+      | _                 => []
+    fun has_repeats lst =
+      case lst of
+        [] => false
+      | s::lst' => List.exists (fn(x) => x=s) lst' orelse has_repeats lst'
+  in
+    (not o has_repeats o all_strings) p
+  end
