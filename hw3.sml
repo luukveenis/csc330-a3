@@ -124,3 +124,23 @@ fun check_pat p =
   in
     (not o has_repeats o all_strings) p
   end
+
+fun match(v, p) =
+  case p of
+    Wildcard   => SOME []
+  | Variable s => SOME [(s,v)]
+  | UnitP      => (case v of
+                    Unit => SOME []
+                  | _    => NONE)
+  | ConstP x   => (case v of
+                    Const y => if x=y then SOME [] else NONE
+                  | _       => NONE)
+  | TupleP ps  => (case v of
+                     Tuple vs => if List.length(ps)=List.length(vs) then
+                                   (all_answers match o ListPair.zip) (vs, ps)
+                                 else NONE
+                   | _ => NONE)
+  | ConstructorP (s1,p) => (case v of
+                             Constructor(s2,v) => if s1=s2 then match(v,p)
+                                                  else NONE
+                           | _ => NONE)

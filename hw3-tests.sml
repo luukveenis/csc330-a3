@@ -220,83 +220,83 @@ fun test_check_pat() =
                             ConstructorP("cony",Variable "test")]),
            expected=true}])
 
-(* fun test_match() = *)
-(*     test("test_match", *)
-(*          [{actual=match(Unit, UnitP), *)
-(*            expected=SOME []}, *)
-(*           {actual=match(Unit, Variable "cat"), *)
-(*            expected=SOME [("cat", Unit)]}, *)
-(*           {actual=match(Unit, ConstP 3), *)
-(*            expected=NONE}, *)
-(*           {actual=match(Tuple [], TupleP [Wildcard]), *)
-(*            expected=NONE}, *)
-(*           {actual=match(Tuple [Unit], TupleP []), *)
-(*            expected=NONE}, *)
-(*           {actual=match(Tuple [Unit], Variable "cat"), *)
-(*            expected=SOME [("cat", Tuple [Unit])]}, *)
-(*           {actual=match(Tuple [Unit], TupleP [Variable "cat"]), *)
-(*            expected=SOME [("cat", Unit)]}, *)
-(*           {actual=match(Tuple [Unit, Const 8], TupleP [Variable "cat", ConstP 3]), *)
-(*            expected=NONE}, *)
-(*           {actual=match(Tuple [Unit, Const 8], TupleP [Variable "cat", Variable "dog"]), *)
-(*            expected=SOME [("cat", Unit),("dog", Const 8)]}, *)
-(*           {actual=match(Tuple [Unit, Tuple [Unit, Unit]], *)
-(*                         TupleP [Variable "cat", TupleP [Variable "dog", Variable "rat"]]), *)
-(*            expected=SOME [("cat", Unit), ("dog", Unit),  ("rat", Unit)]}, *)
-(*           {actual=match(Constructor ("mat", Unit), ConstructorP ("hat", Variable "cat")), *)
-(*            expected=NONE}, *)
-(*           {actual=match(Constructor ("dog", Unit), ConstructorP ("dog", Variable "cat")), *)
-(*            expected=SOME [("cat", Unit)]}, *)
-(*           {actual=match(Tuple[Const 17, Unit, Const 7, *)
-(*                               Constructor ("zoe", Const 7), *)
-(*                               Constructor ("zoe", (Constructor ("zoe", Const 7)))], *)
-(*                         TupleP[Wildcard,Wildcard]), *)
-(*            expected=NONE}, *)
-(*           {actual=match(Const 7, Wildcard ), *)
-(*            expected=SOME []}, *)
-(*           {actual=match(Unit, Wildcard ), *)
-(*            expected=SOME []}, *)
-(*           {actual=match(Tuple[Const 7], Wildcard ), *)
-(*            expected=SOME []}, *)
-(*           {actual=match(Constructor("cat", Const 7), Wildcard ), *)
-(*            expected=SOME []}, *)
-(*           {actual=match(Const 7, Variable "Zoe" ), *)
-(*            expected=SOME [("Zoe", Const 7)]}, *)
-(*           {actual=match(Unit, Variable "chopsticks" ), *)
-(*            expected=SOME [("chopsticks", Unit)]}, *)
-(*           {actual=match(Unit, UnitP ), *)
-(*            expected=SOME []}, *)
-(*           {actual=match(Const 7, UnitP ), *)
-(*            expected=NONE}, *)
-(*           {actual=match(Const 7, ConstP 7 ), *)
-(*            expected=SOME []}, *)
-(*           {actual=match(Const 7, ConstP 8 ), *)
-(*            expected=NONE}, *)
-(*           {actual=match(Constructor("Cat", Const 7), ConstructorP("Cat", Wildcard)), *)
-(*            expected= SOME[]}, *)
-(*           {actual=match(Constructor("Dog", Const 7), ConstructorP("Cat", Wildcard)), *)
-(*            expected= NONE}, *)
-(*           {actual=match(Constructor("Cat", Const 7), ConstructorP("Cat", UnitP)), *)
-(*            expected= NONE}, *)
-(*           {actual=match(Constructor("Cat", Const 7), ConstructorP("Cat", Variable "dog")) , *)
-(*            expected= SOME [("dog", Const 7)]}, *)
-(*           {actual=match(Tuple[Const 7], TupleP[ConstP 7]), *)
-(*            expected= SOME []}, *)
-(*           {actual=match(Tuple[Const 7], TupleP[ConstP 7,ConstP 7]), *)
-(*            expected= NONE}, *)
-(*           {actual=match(Tuple[Const 7, Const 6, Unit, Const 8], *)
-(*                         TupleP[ConstP 7, Variable "cat",Wildcard, ConstP 8]), *)
-(*            expected=SOME [("cat",Const 6)]}, *)
-(*           {actual=match(Tuple[Const 7, Const 6, Unit, Const 7], *)
-(*                         TupleP[ *)
-(*                           Variable "a", *)
-(*                           Variable "ab", *)
-(*                           Variable "abc", *)
-(*                           Variable "abcd"]), *)
-(*            expected=SOME [("a",Const 7), ("ab",Const 6), ("abc",Unit), ("abcd",Const 7) *)
-(*           ]} *)
-(*          ]) *)
-(*  *)
+fun test_match() =
+    test("test_match",
+         [{actual=match(Unit, UnitP),
+           expected=SOME []},
+          {actual=match(Unit, Variable "cat"),
+           expected=SOME [("cat", Unit)]},
+          {actual=match(Unit, ConstP 3),
+           expected=NONE},
+          {actual=match(Tuple [], TupleP [Wildcard]),
+           expected=NONE},
+          {actual=match(Tuple [Unit], TupleP []),
+           expected=NONE},
+          {actual=match(Tuple [Unit], Variable "cat"),
+           expected=SOME [("cat", Tuple [Unit])]},
+          {actual=match(Tuple [Unit], TupleP [Variable "cat"]),
+           expected=SOME [("cat", Unit)]},
+          {actual=match(Tuple [Unit, Const 8], TupleP [Variable "cat", ConstP 3]),
+           expected=NONE},
+          {actual=match(Tuple [Unit, Const 8], TupleP [Variable "cat", Variable "dog"]),
+           expected=SOME [("cat", Unit),("dog", Const 8)]},
+          {actual=match(Tuple [Unit, Tuple [Unit, Unit]],
+                        TupleP [Variable "cat", TupleP [Variable "dog", Variable "rat"]]),
+           expected=SOME [("cat", Unit), ("dog", Unit),  ("rat", Unit)]},
+          {actual=match(Constructor ("mat", Unit), ConstructorP ("hat", Variable "cat")),
+           expected=NONE},
+          {actual=match(Constructor ("dog", Unit), ConstructorP ("dog", Variable "cat")),
+           expected=SOME [("cat", Unit)]},
+          {actual=match(Tuple[Const 17, Unit, Const 7,
+                              Constructor ("zoe", Const 7),
+                              Constructor ("zoe", (Constructor ("zoe", Const 7)))],
+                        TupleP[Wildcard,Wildcard]),
+           expected=NONE},
+          {actual=match(Const 7, Wildcard ),
+           expected=SOME []},
+          {actual=match(Unit, Wildcard ),
+           expected=SOME []},
+          {actual=match(Tuple[Const 7], Wildcard ),
+           expected=SOME []},
+          {actual=match(Constructor("cat", Const 7), Wildcard ),
+           expected=SOME []},
+          {actual=match(Const 7, Variable "Zoe" ),
+           expected=SOME [("Zoe", Const 7)]},
+          {actual=match(Unit, Variable "chopsticks" ),
+           expected=SOME [("chopsticks", Unit)]},
+          {actual=match(Unit, UnitP ),
+           expected=SOME []},
+          {actual=match(Const 7, UnitP ),
+           expected=NONE},
+          {actual=match(Const 7, ConstP 7 ),
+           expected=SOME []},
+          {actual=match(Const 7, ConstP 8 ),
+           expected=NONE},
+          {actual=match(Constructor("Cat", Const 7), ConstructorP("Cat", Wildcard)),
+           expected= SOME[]},
+          {actual=match(Constructor("Dog", Const 7), ConstructorP("Cat", Wildcard)),
+           expected= NONE},
+          {actual=match(Constructor("Cat", Const 7), ConstructorP("Cat", UnitP)),
+           expected= NONE},
+          {actual=match(Constructor("Cat", Const 7), ConstructorP("Cat", Variable "dog")) ,
+           expected= SOME [("dog", Const 7)]},
+          {actual=match(Tuple[Const 7], TupleP[ConstP 7]),
+           expected= SOME []},
+          {actual=match(Tuple[Const 7], TupleP[ConstP 7,ConstP 7]),
+           expected= NONE},
+          {actual=match(Tuple[Const 7, Const 6, Unit, Const 8],
+                        TupleP[ConstP 7, Variable "cat",Wildcard, ConstP 8]),
+           expected=SOME [("cat",Const 6)]},
+          {actual=match(Tuple[Const 7, Const 6, Unit, Const 7],
+                        TupleP[
+                          Variable "a",
+                          Variable "ab",
+                          Variable "abc",
+                          Variable "abcd"]),
+           expected=SOME [("a",Const 7), ("ab",Const 6), ("abc",Unit), ("abcd",Const 7)
+          ]}
+         ])
+
 (* fun test_first_match() = *)
 (*     test("test_first_match", *)
 (*          [ *)
@@ -367,8 +367,8 @@ val all_tests =
      test_count_wildcards,
      test_count_wild_and_variable_lengths,
      test_count_some_var,
-     test_check_pat
-     (* test_match, *)
+     test_check_pat,
+     test_match
      (* test_first_match *)
      ]
 
