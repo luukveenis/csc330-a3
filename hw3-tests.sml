@@ -297,61 +297,61 @@ fun test_match() =
           ]}
          ])
 
-(* fun test_first_match() = *)
-(*     test("test_first_match", *)
-(*          [ *)
-(*            {actual=first_match Unit [UnitP], expected=SOME []}, *)
-(*            {actual=first_match Unit [Variable "cat"], *)
-(*             expected=SOME [("cat", Unit)]}, *)
-(*            {actual=first_match Unit [ConstP 3], *)
-(*             expected=NONE}, *)
-(*            {actual=first_match (Tuple []) [TupleP [Wildcard]], *)
-(*             expected=NONE}, *)
-(*            {actual=first_match (Tuple [Unit]) [TupleP []], *)
-(*             expected=NONE}, *)
-(*            {actual=first_match (Tuple [Unit]) [TupleP [Variable "cat"]], *)
-(*             expected=SOME [("cat", Unit)]}, *)
-(*            {actual=first_match (Tuple [Unit, Const 8]) [TupleP [Variable "cat", Variable "dog"]], *)
-(*             expected=SOME [("cat", Unit),("dog", Const 8)]}, *)
-(*            {actual=first_match (Constructor ("mat", Unit)) [ConstructorP ("hat",Variable "cat")], *)
-(*             expected=NONE}, *)
-(*            {actual=first_match (Constructor ("dog", Unit)) [ConstructorP("dog",Variable "cat")], *)
-(*             expected=SOME [("cat", Unit)]}, *)
-(*            {actual=first_match (Const 7) [Wildcard ], *)
-(*             expected=SOME []}, *)
-(*            {actual=first_match Unit [Wildcard ], *)
-(*             expected=SOME []}, *)
-(*            {actual=first_match (Tuple[Const 7]) [Wildcard ], *)
-(*             expected=SOME []}, *)
-(*            {actual=first_match Unit [Variable "chopsticks" ], *)
-(*             expected=SOME [("chopsticks", Unit)]}, *)
-(*            {actual=first_match Unit [UnitP ], *)
-(*             expected=SOME []}, *)
-(*            {actual=first_match (Const 7) [UnitP ], *)
-(*             expected=NONE}, *)
-(*            {actual=first_match (Const 7) [ConstP 7 ], *)
-(*             expected=SOME []}, *)
-(*            {actual=first_match (Const 7) [ConstP 8 ], *)
-(*             expected=NONE}, *)
-(*            {actual=first_match (Constructor("Cat", Const 7)) [ConstructorP("Cat",Variable "dog")] , *)
-(*             expected= SOME [("dog",Const 7)]}, *)
-(*            {actual=first_match (Tuple[Const 7]) [TupleP[ConstP 7]], *)
-(*             expected= SOME []}, *)
-(*            {actual=first_match (Tuple[Const 7]) [TupleP[ConstP 7,ConstP 7]], *)
-(*             expected= NONE}, *)
-(*            {actual=first_match (Tuple[Const 7, Const 6, Unit, Const 8]) *)
-(*                                [TupleP[ConstP 7, Variable "cat",Wildcard, ConstP 8]], *)
-(*             expected=SOME [("cat",Const 6)]}, *)
-(*            {actual=first_match (Tuple[Const 7, Const 6, Unit, Const 7]) *)
-(*                                [TupleP[Variable "a", Variable "ab", *)
-(*                                        Variable "abc", Variable "abcd"]], *)
-(*             expected=SOME [ *)
-(*               ("a",Const 7), *)
-(*               ("ab",Const 6), *)
-(*               ("abc",Unit), *)
-(*               ("abcd",Const 7) *)
-(*            ]} *)
-(*         ]) *)
+fun test_first_match() =
+    test("test_first_match",
+         [
+           {actual=first_match Unit [UnitP], expected=SOME []},
+           {actual=first_match Unit [Variable "cat"],
+            expected=SOME [("cat", Unit)]},
+           {actual=first_match Unit [ConstP 3],
+            expected=NONE},
+           {actual=first_match (Tuple []) [TupleP [Wildcard]],
+            expected=NONE},
+           {actual=first_match (Tuple [Unit]) [TupleP []],
+            expected=NONE},
+           {actual=first_match (Tuple [Unit]) [TupleP [Variable "cat"]],
+            expected=SOME [("cat", Unit)]},
+           {actual=first_match (Tuple [Unit, Const 8]) [TupleP [Variable "cat", Variable "dog"]],
+            expected=SOME [("cat", Unit),("dog", Const 8)]},
+           {actual=first_match (Constructor ("mat", Unit)) [ConstructorP ("hat",Variable "cat")],
+            expected=NONE},
+           {actual=first_match (Constructor ("dog", Unit)) [ConstructorP("dog",Variable "cat")],
+            expected=SOME [("cat", Unit)]},
+           {actual=first_match (Const 7) [Wildcard ],
+            expected=SOME []},
+           {actual=first_match Unit [Wildcard ],
+            expected=SOME []},
+           {actual=first_match (Tuple[Const 7]) [Wildcard ],
+            expected=SOME []},
+           {actual=first_match Unit [Variable "chopsticks" ],
+            expected=SOME [("chopsticks", Unit)]},
+           {actual=first_match Unit [UnitP ],
+            expected=SOME []},
+           {actual=first_match (Const 7) [UnitP ],
+            expected=NONE},
+           {actual=first_match (Const 7) [ConstP 7 ],
+            expected=SOME []},
+           {actual=first_match (Const 7) [ConstP 8 ],
+            expected=NONE},
+           {actual=first_match (Constructor("Cat", Const 7)) [ConstructorP("Cat",Variable "dog")] ,
+            expected= SOME [("dog",Const 7)]},
+           {actual=first_match (Tuple[Const 7]) [TupleP[ConstP 7]],
+            expected= SOME []},
+           {actual=first_match (Tuple[Const 7]) [TupleP[ConstP 7,ConstP 7]],
+            expected= NONE},
+           {actual=first_match (Tuple[Const 7, Const 6, Unit, Const 8])
+                               [TupleP[ConstP 7, Variable "cat",Wildcard, ConstP 8]],
+            expected=SOME [("cat",Const 6)]},
+           {actual=first_match (Tuple[Const 7, Const 6, Unit, Const 7])
+                               [TupleP[Variable "a", Variable "ab",
+                                       Variable "abc", Variable "abcd"]],
+            expected=SOME [
+              ("a",Const 7),
+              ("ab",Const 6),
+              ("abc",Unit),
+              ("abcd",Const 7)
+           ]}
+        ])
 
 val all_tests =
     [test_only_capitals,
@@ -368,8 +368,8 @@ val all_tests =
      test_count_wild_and_variable_lengths,
      test_count_some_var,
      test_check_pat,
-     test_match
-     (* test_first_match *)
+     test_match,
+     test_first_match
      ]
 
 fun run() =

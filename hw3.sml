@@ -144,3 +144,6 @@ fun match(v, p) =
                              Constructor(s2,v) => if s1=s2 then match(v,p)
                                                   else NONE
                            | _ => NONE)
+
+fun first_match v ps =
+    SOME (first_answer (fn(x) => match(v, x)) ps) handle NoAnswer => NONE
