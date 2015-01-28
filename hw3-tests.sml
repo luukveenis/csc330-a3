@@ -122,20 +122,20 @@ fun test_longest_string4() =
           {actual=longest_string4(swords), expected="dog"}
         ])
 
-(* fun test_longest_cap() = *)
-(*   let *)
-(*     val words = ["This","the","A","Hello","World","not","long string","loooong string"] *)
-(*   in *)
-(*     test("longest_capitalized words",[ *)
-(*           {actual=longest_capitalized words, expected="Hello"}, *)
-(*           {actual=longest_capitalized([]), expected=""}, *)
-(*           {actual=longest_capitalized(["vancouver","Ottawa","Victoria","Guatemala"]), expected="Guatemala"}, *)
-(*           {actual=longest_capitalized ["then","The","To","testing"], expected="The"}, *)
-(*           {actual=longest_capitalized ["then","The","To","Cat","testing"], expected="The"}, *)
-(*           {actual=longest_capitalized ["then","the","to","testing"], expected=""} *)
-(*         ]) *)
-(*     end *)
-(*  *)
+fun test_longest_cap() =
+  let
+    val words = ["This","the","A","Hello","World","not","long string","loooong string"]
+  in
+    test("longest_capitalized words",[
+          {actual=longest_capitalized words, expected="Hello"},
+          {actual=longest_capitalized([]), expected=""},
+          {actual=longest_capitalized(["vancouver","Ottawa","Victoria","Guatemala"]), expected="Guatemala"},
+          {actual=longest_capitalized ["then","The","To","testing"], expected="The"},
+          {actual=longest_capitalized ["then","The","To","Cat","testing"], expected="The"},
+          {actual=longest_capitalized ["then","the","to","testing"], expected=""}
+        ])
+    end
+
 fun test_rev_string() =
     test("rev_string", [
           {actual=rev_string "Hello World!", expected="!dlroW olleH"},
@@ -359,7 +359,7 @@ val all_tests =
      test_longest_string2,
      test_longest_string3,
      test_longest_string4,
-     (* test_longest_cap, *)
+     test_longest_cap,
      test_rev_string,
      test_first_answer,
      test_first_answer_exc,
