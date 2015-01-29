@@ -63,8 +63,7 @@ fun longest_string4(lst: string list) =
     longest_string_helper f lst
   end
 
-fun longest_capitalized(lst: string list) =
-  (longest_string1 o only_capitals) lst
+val longest_capitalized = longest_string1 o only_capitals
 
 fun rev_string(s: string) =
   (String.implode o rev o String.explode) s
